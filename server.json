@@ -1,31 +1,37 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "eu.ansvar/portuguese-competition-mcp",
-  "description": "Query AdC (Autoridade da Concorrencia — Portuguese Competition Authority) enforcement decisions, merger control cases, and sector enforcement",
+  "description": "AdC (Autoridade da Concorrência — Portuguese Competition Authority) MCP server — enforcement decisions, merger control, and sector enforcement",
   "repository": {
     "url": "https://github.com/Ansvar-Systems/portuguese-competition-mcp",
     "source": "github"
   },
   "homepage": "https://ansvar.eu",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "keywords": [
-    "adc",
-    "autoridade-da-concorrencia",
-    "portuguese-competition",
-    "competition-law",
+    "competition",
     "portugal",
+    "regulation",
     "compliance",
-    "mcp",
-    "ansvar"
+    "mcp"
   ],
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@ansvar/portuguese-competition-mcp",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "transport": {
         "type": "stdio"
+      }
+    },
+    {
+      "registryType": "npm",
+      "identifier": "@ansvar/portuguese-competition-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "streamable-http",
+        "url": "https://mcp.ansvar.eu/portuguese-competition/mcp"
       }
     }
   ]
