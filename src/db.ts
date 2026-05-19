@@ -10,8 +10,6 @@
  */
 
 import Database from "better-sqlite3";
-import { existsSync, mkdirSync } from "node:fs";
-import { dirname } from "node:path";
 
 const DB_PATH = process.env["ADC_DB_PATH"] ?? "data/adc.db";
 
@@ -159,17 +157,7 @@ let _db: Database.Database | null = null;
 
 export function getDb(): Database.Database {
   if (_db) return _db;
-
-  const dir = dirname(DB_PATH);
-  if (!existsSync(dir)) {
-    mkdirSync(dir, { recursive: true });
-  }
-
-  _db = new Database(DB_PATH);
-  _db.pragma("journal_mode = WAL");
-  _db.pragma("foreign_keys = ON");
-  _db.exec(SCHEMA_SQL);
-
+  _db = new Database(DB_PATH, { readonly: true, fileMustExist: true });
   return _db;
 }
 
